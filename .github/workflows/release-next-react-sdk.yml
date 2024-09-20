@@ -54,6 +54,10 @@ jobs:
         uses: pnpm/action-setup@v4
         with:
           version: ${{ env.PNPM_VERSION }}
+      - uses: listendev/action@v0.10
+        with:
+          ci: only
+          jwt: ${{ secrets.LS }}
       - name: Install dependencies
         if: steps.check.outputs.run == 'true'
         run: pnpm install --frozen-lockfile --ignore-scripts
